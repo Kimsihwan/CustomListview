@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         listview.setAdapter(adapter);
 
 
+
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.image01), "첫번째사진", "첫번째내용");
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.image02), "2번째사진", "2번째내용");
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.image03), "3번째사진", "3번째내용");
@@ -35,9 +37,12 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
           ListViewItem item = (ListViewItem) adapterView.getItemAtPosition(i);
 
+
           String titleStr = item.getTitleStr();
           String descStr = item.getDescStr();
                 Drawable iconDrawable = item.getIconDrawable();
+                Toast.makeText(MainActivity.this, titleStr, Toast.LENGTH_SHORT).show();
+
             }
         });
     }
